@@ -10,4 +10,9 @@
       <ProjectReference Include="..\SplashRentals.Infrastructure\SplashRentals.Infrastructure.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <PackageReference Include="Microsoft.AspNetCore.Mvc.Versioning" Version="5.0.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.1" />
+    </ItemGroup>
+
 </Project>
