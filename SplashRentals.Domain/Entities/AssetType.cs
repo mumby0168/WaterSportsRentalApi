@@ -1,5 +1,6 @@
 using System;
 using SplashRentals.Domain.Abstractions;
+using SplashRentals.Domain.Exceptions;
 
 namespace SplashRentals.Domain.Entities
 {
@@ -7,8 +8,10 @@ namespace SplashRentals.Domain.Entities
     {
         public string Name { get; }
 
-        public AssetType(string name, string? id)
+        public AssetType(string name, string? id = null)
         {
+            if (string.IsNullOrWhiteSpace(name)) throw new DomainException("An asset type must provide a name.");
+            
             Name = name;
             Id = id ?? Guid.NewGuid().ToString();
         }

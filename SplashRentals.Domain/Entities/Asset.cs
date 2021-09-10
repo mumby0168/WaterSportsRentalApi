@@ -1,4 +1,5 @@
 using SplashRentals.Domain.Abstractions;
+using SplashRentals.Domain.Exceptions;
 
 namespace SplashRentals.Domain.Entities
 {
@@ -21,6 +22,9 @@ namespace SplashRentals.Domain.Entities
 
         public Asset(string win, AssetType assetType, int occupancy)
         {
+            if (string.IsNullOrWhiteSpace(win)) throw new DomainException("An asset must provide a win.");
+            if (occupancy < 1) throw new DomainException("An asset must be able to occupy at least one person.");
+
             Id = win;
             AssetType = assetType;
             Occupancy = occupancy;
