@@ -45,7 +45,10 @@ namespace SplashRentals.Infrastructure.Repositories
             }
         }
 
-        public async ValueTask CreateAsync(Asset asset) => 
+        public async ValueTask CreateAsync(Asset asset)
+        {
+            await _assetTypeRepository.UpdateAsync(asset.AssetType);
             await _rentableAssetRepository.CreateAsync(asset);
+        }
     }
 }
